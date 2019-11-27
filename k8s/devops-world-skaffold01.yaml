@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  generateName: devops-world-skaffold01-
+  labels:
+    app: devops-world-skaffold01
+  name: devops-world-skaffold01
+  namespace: jx
+spec:
+  containers:
+  - image: gcr.io/cbjx-bellycurse/devops-world-skaffold01
+    imagePullPolicy: IfNotPresent
+    name: devops-world-skaffold01
+    ports:
+    - containerPort: 8080
+      protocol: TCP
+    resources:
+      limits:
+        cpu: 100m
+        memory: 256Mi
+      requests:
+        cpu: 80m
+        memory: 128Mi
