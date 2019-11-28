@@ -1,28 +1,13 @@
-apiVersion: skaffold/v1beta2
+apiVersion: skaffold/v1
 kind: Config
 build:
   artifacts:
-  - image: cbjx-bellycurse/devops-world-skaffold01
+  - image: gcr.io/cbjx-bellycurse/devops-world-skaffold01
     context: .
     docker: {}
-  tagPolicy:
-    envTemplate:
-      template: '{{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.VERSION}}'
+#  tagPolicy:
+#    envTemplate:
+#      template: '{{.IMAGE_NAME}}:{{.VERSION}}'
   local: {}
 deploy:
   kubectl: {}
-profiles:
-- name: dev
-  build:
-    tagPolicy:
-      envTemplate:
-        template: '{{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}:{{.DIGEST_HEX}}'
-    local: {}
-  deploy:
-    helm:
-      releases:
-      - name: devops-world-skaffold01
-        chartPath: charts/devops-world-skaffold01
-        setValueTemplates:
-          image.repository: '{{.DOCKER_REGISTRY}}/{{.IMAGE_NAME}}'
-          image.tag: '{{.DIGEST_HEX}}'

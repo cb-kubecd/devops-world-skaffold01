@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: devops-world-skaffold01
+  namespace: jx
+spec:
+  rules:
+  - host: devops-world-skaffold01-jx.cbjx-bellycurse.play-jxaas.live
+    http:
+      paths:
+      - backend:
+          serviceName: devops-world-skaffold01
+          servicePort: 80
+  tls:
+  - hosts:
+    - devops-world-skaffold01-jx.cbjx-bellycurse.play-jxaas.live
+    secretName: tls-cbjx-bellycurse-play-jxaas-live-p
