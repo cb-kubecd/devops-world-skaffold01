@@ -1,0 +1,6 @@
+schemaVersion: 2.0.0
+
+fileExistenceTests:
+- name: 'devops world binary'
+  path: '/devops-world-skaffold01'
+  shouldExist: true

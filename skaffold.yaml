@@ -5,9 +5,13 @@ build:
   - image: gcr.io/cbjx-bellycurse/devops-world-skaffold01
     context: .
     docker: {}
-#  tagPolicy:
-#    envTemplate:
-#      template: '{{.IMAGE_NAME}}:{{.VERSION}}'
+  tagPolicy:
+    envTemplate:
+      template: '{{.IMAGE_NAME}}:{{.VERSION}}'
   local: {}
 deploy:
   kubectl: {}
+test:
+- image: gcr.io/cbjx-bellycurse/devops-world-skaffold01
+  structureTests:
+  - tests/*.yaml
